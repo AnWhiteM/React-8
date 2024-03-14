@@ -1,26 +1,28 @@
-import Contact from '../Contact/Contact.jsx';
-import css from './ContactList.module.css';
 import { useSelector } from 'react-redux';
-import { selectContacts, selectFilters } from '../../redux/selectors';
+import {
+  selectFilteredContacts,
+  selectLoading,
+} from '../../redux/contacts/selectors';
+import { Contact } from '../Contact/Contact';
+import css from './ContactList.module.css';
 
-
-export default function ContactList() {
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(selectFilters);
-
-  const filteredContacts = contacts.filter(contact => {
-    const normalizedFilter = filter.toLowerCase();
-    return contact && contact.text && contact.text.toLowerCase().includes(normalizedFilter);
-  });
+export const ContactList = () => {
+  const contacts = useSelector(selectFilteredContacts);
+  const isLoading = useSelector(selectLoading);
 
   return (
     <div>
-      <h2>Contact List</h2>
-      <ul className={css.contactList}>
-        {filteredContacts.map(contact => (
-          <Contact key={contact.id} contact={contact} />
-        ))}
-      </ul>
+      {isLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <ul className={css.contactList}>
+          {contacts.map(contact => (
+            <li key={contact.id}>
+              <Contact contact={contact} />
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
-}
+};
