@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { addContact } from '../../redux/contacts/operations';
 import css from './ContactForm.module.css';
-import { Formik, Form, Field} from 'formik';
+import { Formik, Form, Field, ErrorMessage} from 'formik';
 import { useId } from 'react';
 import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
@@ -17,17 +17,16 @@ const validationSchema = Yup.object().shape({
     .max(50, 'Phone number must be less than 50 characters'),
 });
 
+const initialValues = {
+  name: '',
+  number: '',
+};
+
 
 export const ContactForm = () => {
-  const nameId = useId();
-  const phoneId = useId();
+  const userNameId = useId();
+  const numberId = useId();
   const dispatch = useDispatch();
-
-  const initialValues = {
-    name: '',
-    number: '',
-  };
-  
 
   const handleSubmit = (values, actions) => {
     const newContact = {
@@ -42,36 +41,24 @@ export const ContactForm = () => {
 
   return (
     <div className={css.formBlock}>
-      <h2>Add New Contact</h2>
-      <Formik
-        initialValues={initialValues}
-        onSubmit={handleSubmit}
-        validationSchema={validationSchema}
-      >
-        
-          <Form className={css.form}>
-            <label htmlFor={nameId}>Name</label>
-            <Field
-              type="text"
-              name="text"
-              id={nameId}
-            />
+      <h2>Add contact</h2>
+    <Formik
+      initialValues={initialValues}
+      onSubmit={handleSubmit}
+      validationSchema={validationSchema}
+    >
+      <Form>
+        <label htmlFor={userNameId}>Name:</label>
+        <ErrorMessage name="name" component="span"/>
+        <Field type="text" name="name" id={userNameId} />
 
-            <br />
+        <label htmlFor={numberId}>Number:</label>
+        <ErrorMessage name="number" component="span" />
+        <Field type="phone" name="number" id={numberId} />
 
-            <label htmlFor={phoneId}>Number</label>
-            <Field
-              type="text"
-              name="phone"
-              id={phoneId}
-            />
-
-            <br />
-
-            <button type="submit">Add</button>
-          </Form>
-       
-      </Formik>
+        <button type="submit">Add</button>
+      </Form>
+    </Formik>
     </div>
   );
-}
+};

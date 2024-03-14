@@ -13,8 +13,8 @@ export const Contact = ({ contact }) => {
         <div className={css.contactBlock}>
             
             <ul>
-                <li><p>{contact.text}</p></li>
-                <li><p>{contact.phone}</p></li>
+                <li><p>{contact.name}</p></li>
+                <li><p>{contact.number}</p></li>
             </ul>
 
             <button onClick={handleDelete} className={css.deleteButton}>Delete</button>

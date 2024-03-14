@@ -11,7 +11,9 @@ export const ContactList = () => {
   const isLoading = useSelector(selectLoading);
 
   return (
+    
     <div>
+      <h3>Contact List</h3>
       {isLoading ? (
         <div>Loading...</div>
       ) : (
