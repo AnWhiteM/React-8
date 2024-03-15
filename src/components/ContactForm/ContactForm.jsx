@@ -7,11 +7,11 @@ import { nanoid } from 'nanoid';
 import * as Yup from 'yup';
 
 const validationSchema = Yup.object().shape({
-  text: Yup.string()
+  name: Yup.string()
     .required('Name is required')
     .min(3, 'Name must be at least 3 characters')
     .max(50, 'Name must be less than 50 characters'),
-  phone: Yup.string()
+  number: Yup.string()
     .required('Phone number is required')
     .min(3, 'Phone number must be at least 3 characters')
     .max(50, 'Phone number must be less than 50 characters'),

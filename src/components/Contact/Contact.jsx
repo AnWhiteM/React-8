@@ -9,7 +9,7 @@ export const Contact = ({ contact }) => {
 
   
     return (
-        <li>
+        
         <div className={css.contactBlock}>
             
             <ul>
@@ -19,7 +19,7 @@ export const Contact = ({ contact }) => {
 
             <button onClick={handleDelete} className={css.deleteButton}>Delete</button>
         </div>
-        </li>
+        
     )
 
     
