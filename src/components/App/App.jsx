@@ -30,17 +30,17 @@ import { useAuth } from '../../hooks';
           <Route
             path="/register"
             element={
-              <RestrictedRoute redirectTo="/tasks" component={<Registration />} />
+              <RestrictedRoute redirectTo="/contacts" component={<Registration />} />
             }
           />
           <Route
             path="/login"
             element={
-              <RestrictedRoute redirectTo="/tasks" component={<Login />} />
+              <RestrictedRoute redirectTo="/contacts" component={<Login />} />
             }
           />
           <Route
-            path="/tasks"
+            path="/contacts"
             element={
               <PrivateRoute redirectTo="/login" component={<Contacts />} />
             }
