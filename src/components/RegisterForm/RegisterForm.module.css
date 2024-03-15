@@ -1,0 +1,9 @@
+.regForm{
+    margin-top: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.input{
+    margin-left: 5px;
+}

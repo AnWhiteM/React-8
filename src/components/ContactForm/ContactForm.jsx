@@ -47,14 +47,14 @@ export const ContactForm = () => {
       onSubmit={handleSubmit}
       validationSchema={validationSchema}
     >
-      <Form>
+      <Form className={css.form}>
         <label htmlFor={userNameId}>Name:</label>
         <ErrorMessage name="name" component="span"/>
-        <Field type="text" name="name" id={userNameId} />
+        <Field type="text" name="name" id={userNameId} className={css.field}/>
 
         <label htmlFor={numberId}>Number:</label>
         <ErrorMessage name="number" component="span" />
-        <Field type="phone" name="number" id={numberId} />
+        <Field type="phone" name="number" id={numberId} className={css.field}/>
 
         <button type="submit">Add</button>
       </Form>

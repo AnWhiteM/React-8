@@ -6,6 +6,7 @@ import { ContactForm } from '../components/ContactForm/ContactForm';
 import { fetchContacts } from '../redux/contacts/operations';
 import { selectLoading } from '../redux/contacts/selectors';
 import { SearchBox } from '../components/SearchBox/SearchBox';
+import css from './Contacts.module.css'
 
 export default function Contacts() {
   const dispatch = useDispatch();
@@ -16,7 +17,7 @@ export default function Contacts() {
   }, [dispatch]);
 
   return (
-    <>
+    <section className={css.contSection}>
       <Helmet>
         <title>Your contacts</title>
       </Helmet>
@@ -24,6 +25,6 @@ export default function Contacts() {
       <SearchBox />
       <div>{isLoading && 'Request in progress...'}</div>
       <ContactList />
-    </>
+      </section>
   );
 }
